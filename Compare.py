@@ -74,7 +74,7 @@ class Datastore():
 
 
 if __name__ == '__main__':
-    maxdatasize = 10
+    maxdatasize = 5000
     timings = []
     recursivetimings = []
     for k in range(1, maxdatasize + 1):
