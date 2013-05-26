@@ -4,8 +4,8 @@ Script to compare binary search written with recursive and non recursive code
 """
 
 from __future__ import division
-import pickle
 import time
+from csv import writer
 
 
 def mean(list):
@@ -74,7 +74,7 @@ class Datastore():
 
 
 if __name__ == '__main__':
-    maxdatasize = 5000
+    maxdatasize = 50
     timings = []
     recursivetimings = []
     for k in range(1, maxdatasize + 1):
@@ -87,7 +87,16 @@ if __name__ == '__main__':
 
     # Pickle data
 
+    print "Creating datastore"
     datastore = Datastore(timings)
-    f = open("datastore.pickle", "w")
-    pickle.dump(datastore, f)
+    print "Writing files to csv"
+    f = open("binarysearch.csv", "w")
+    outfile = writer(f)
+    for row in datastore.basedata:
+        outfile.writerow(row)
+    f.close()
+    f = open("recursivebinarysearch.csv", "w")
+    outfile = writer(f)
+    for row in datastore.recursivedata:
+        outfile.writerow(row)
     f.close()
