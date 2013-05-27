@@ -21,7 +21,10 @@ def timeit(code, trials=10):
     return mean(t)
 
 
-def binarysearch(data, target):
+data = range(10)
+
+
+def binarysearch(target):
     """
     Code that carries out a binary search
     """
@@ -39,7 +42,7 @@ def binarysearch(data, target):
     return index
 
 
-def recursivebinarysearch(data, target, first, last):
+def recursivebinarysearch(target, first, last):
     """
     Code that carries out a recursive binary search
     """
@@ -49,54 +52,28 @@ def recursivebinarysearch(data, target, first, last):
     if target == data[index]:
         return index
     if target < data[index]:
-        return recursivebinarysearch(data, target, first, index - 1)
+        return recursivebinarysearch(target, first, index - 1)
     else:
-        return recursivebinarysearch(data, target, index + 1, last)
+        return recursivebinarysearch(target, index + 1, last)
     return index
 
 
-class Datastore():
-    """
-    Class to hold the data.
-    """
-    def __init__(self, data):
-        self.rawdata = data
-        self.basedata = []
-        self.recursivedata = []
-        for row in data:
-            k = 0
-            for e in row[1:]:
-                if k % 2 == 0:
-                    self.basedata.append([row[0], e])
-                else:
-                    self.recursivedata.append([row[0], e])
-                k += 1
-
-
 if __name__ == '__main__':
-    maxdatasize = 10000
+    maxdatasize = 5000
     timings = []
     recursivetimings = []
-    for k in range(1, maxdatasize + 1):
+    f = open("binarysearch.csv", "a")
+    outfile = writer(f)
+    rf = open("recursivebinarysearch.csv", "a")
+    rec_outfile = writer(rf)
+    for k in range(1, maxdatasize + 1, 10):
         print "Searching arrays of size %s" % k
         timings.append([k])
         data = range(k)
         for target in range(k):
-            timings[-1].append(timeit('binarysearch(data, target)'))
-            timings[-1].append(timeit('recursivebinarysearch(data, target, 0, len(data) - 1)'))
-
-    # Pickle data
-
-    print "Creating datastore"
-    datastore = Datastore(timings)
-    print "Writing files to csv"
-    f = open("binarysearch.csv", "w")
-    outfile = writer(f)
-    for row in datastore.basedata:
-        outfile.writerow(row)
+            t = timeit('binarysearch(target)')
+            rt = timeit('recursivebinarysearch(target, 0, len(data) - 1)')
+            outfile.writerow([k, t])
+            rec_outfile.writerow([k, rt])
     f.close()
-    f = open("recursivebinarysearch.csv", "w")
-    outfile = writer(f)
-    for row in datastore.recursivedata:
-        outfile.writerow(row)
-    f.close()
+    rf.close()
