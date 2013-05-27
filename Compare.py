@@ -61,9 +61,9 @@ def recursivebinarysearch(target, first, last):
 if __name__ == '__main__':
     maxdatasize = 5000
     timings = []
-    recursivetimings = []
     f = open("binarysearch.csv", "a")
     outfile = writer(f)
+    recursivetimings = []
     rf = open("recursivebinarysearch.csv", "a")
     rec_outfile = writer(rf)
     for k in range(1, maxdatasize + 1, 10):
