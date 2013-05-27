@@ -57,9 +57,9 @@ def recursivebinarysearch(target, first, last):
 
 
 if __name__ == '__main__':
-    numberofdatasets = 100
-    numberofpoints = 10
-    step = 2
+    numberofdatasets = 100000
+    numberofpoints = 1000
+    step = 100
     timings = []
     f = open("binarysearch.csv", "a")
     outfile = writer(f)
