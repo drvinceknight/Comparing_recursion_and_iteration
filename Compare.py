@@ -67,7 +67,7 @@ if __name__ == '__main__':
     rf = open("recursivebinarysearch.csv", "a")
     rec_outfile = writer(rf)
     for k in xrange(numberofpoints, numberofpoints + numberofdatasets + 1, step):
-        print "Searching arrays of size %s" % k
+        print "Searching arrays of size %s (going to %s)" % (k, numberofpoints + numberofdatasets + 1)
         timings.append([k])
         data = range(k)
         for i in xrange(numberofpoints):
