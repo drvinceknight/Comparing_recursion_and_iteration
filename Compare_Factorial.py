@@ -41,11 +41,13 @@ if __name__ == "__main__":
     sys.setrecursionlimit(N)
     f = open("factorial.csv", "a")
     datafile = csv.writer(f)
-    for n in xrange(1, N + 1):
+    n = 1
+    while n <= N:
         print "Calculating %s!" % n
         t = timeit('factorial(n)')
         print "\t base: %.04f seconds" % t
         r = timeit('recursivefactorial(n)')
         print "\t recursive: %.04f seconds" % r
         datafile.writerow([n, t, r])
+        n += 1
     f.close()
