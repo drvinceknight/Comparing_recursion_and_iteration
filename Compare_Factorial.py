@@ -38,8 +38,8 @@ if __name__ == "__main__":
     N = 1000000
     timings = []
     sys.setrecursionlimit(100000)
-    for n in xrange(N):
-        print "Calculating %n!" % n
+    for n in xrange(1, N + 1):
+        print "Calculating %s!" % n
         t = timeit('factorial(n)')
         print "\t base: %.04f seconds" % t
         r = timeit('recursivefactorial(n)')
