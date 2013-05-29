@@ -57,7 +57,7 @@ def recursivebinarysearch(target, first, last):
 
 
 if __name__ == '__main__':
-    numberofdatasets = 100000
+    numberofdatasets = 1000000
     numberofpoints = 1000
     step = 100
     timings = []
