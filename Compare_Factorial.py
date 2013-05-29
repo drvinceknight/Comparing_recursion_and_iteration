@@ -21,8 +21,10 @@ def timeit(code, trials=10):
 
 def factorial(n):
     r = 1
-    for i in xrange(2, n + 1):
+    i = 1
+    while i <= n:
         r *= i
+        i += 1
     return r
 
 
