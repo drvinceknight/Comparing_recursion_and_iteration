@@ -37,17 +37,19 @@ def recursivefactorial(n):
 if __name__ == "__main__":
     import sys
     import csv
-    N = 10000000
+    N = 10 ** 9
     sys.setrecursionlimit(N)
     f = open("factorial.csv", "a")
     datafile = csv.writer(f)
     n = 1
+    n = 56551
     while n <= N:
         print "Calculating %s!" % n
         t = timeit('factorial(n)')
         print "\t base: %.04f seconds" % t
         r = timeit('recursivefactorial(n)')
         print "\t recursive: %.04f seconds" % r
+        print "\t ratio: %.06f" % t / r
         datafile.writerow([n, t, r])
-        n += 1
+        n += 50
     f.close()
