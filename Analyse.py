@@ -44,16 +44,20 @@ def mean(data):
 
 n = {}
 means = {}
-recursive_means = {}
 for e in basedata:
     if e[0] in n:
         n[e[0]] += 1
         means[e[0]] += e[1]
-        recursive_means[e[0]] += e[2]
     else:
         n[e[0]] = 1
         means[e[0]] = e[1]
-        recursive_means[e[0]] = e[2]
+
+recursive_means = {}
+for e in recursivedata:
+    if e[0] in recursive_means:
+        recursive_means[e[0]] += e[1]
+    else:
+        recursive_means[e[0]] = e[1]
 
 for key in n:
     means[key] /= n[key]
@@ -61,7 +65,7 @@ for key in n:
 
 
 plt.figure()
-x = [n[key] for key in n]
+x = [key for key in n]
 y1 = [means[key] for key in n]
 y2 = [recursive_means[key] for key in n]
 gradient, intercept, r_value, p_value, std_err = stats.linregress(x, y1)
@@ -72,7 +76,7 @@ plt.ylim(0, max(y1))
 gradient, intercept, r_value, p_value, std_err = stats.linregress(x, y2)
 line = [gradient * e + intercept for e in x]
 plt.scatter(x, y2, label="Recursive binary search", color="red")
-plt.plot(x, line, label="Fitted line: y=%.02fx+%.02f" % (gradient, intercept), color="red")
+plt.plot(x, line, label="Fitted line: y=%.05fx+%.05f" % (gradient, intercept), color="red")
 plt.ylim(0, max(plt.ylim()[1], max(y2)))
 plt.legend(loc=2)
 plt.savefig("binary_mean.pdf")
