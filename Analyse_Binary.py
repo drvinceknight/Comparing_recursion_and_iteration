@@ -16,27 +16,27 @@ recursivedata = reader(f)
 recursivedata = [[eval(row[0]), eval(row[1])] for row in recursivedata]
 f.close()
 
-print "Drawing plot with all points"
-plt.figure()
-x = [e[0] for e in basedata]
-y = [e[1] for e in basedata]
-gradient, intercept, r_value, p_value, std_err = stats.linregress(x, y)
-line = [gradient * e + intercept for e in x]
-plt.scatter(x, y, label="Iterative")
-plt.plot(x, line, label="Fitted line: y=%.05fx+%.05f" % (gradient, intercept))
-plt.ylim(0, max(y))
-x = [e[0] for e in recursivedata]
-y = [e[1] for e in recursivedata]
-gradient, intercept, r_value, p_value, std_err = stats.linregress(x, y)
-line = [gradient * e + intercept for e in x]
-plt.scatter(x, y, label="Recursive", color="red")
-plt.plot(x, line, label="Fitted line: y=%.05fx+%.05f" % (gradient, intercept), color="red")
-plt.ylim(0, max(plt.ylim()[1], max(y)))
-plt.xlabel("Size of dataset")
-plt.ylabel("Time (seconds)")
-plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-plt.savefig("binary_all_data.pdf", bbox_inches='tight')
-plt.savefig("binary_all_data.png", bbox_inches='tight')
+#print "Drawing plot with all points"
+#plt.figure()
+#x = [e[0] for e in basedata]
+#y = [e[1] for e in basedata]
+#gradient, intercept, r_value, p_value, std_err = stats.linregress(x, y)
+#line = [gradient * e + intercept for e in x]
+#plt.scatter(x, y, label="Iterative")
+#plt.plot(x, line, label="Fitted line: y=%.05fx+%.05f" % (gradient, intercept))
+#plt.ylim(0, max(y))
+#x = [e[0] for e in recursivedata]
+#y = [e[1] for e in recursivedata]
+#gradient, intercept, r_value, p_value, std_err = stats.linregress(x, y)
+#line = [gradient * e + intercept for e in x]
+#plt.scatter(x, y, label="Recursive", color="red")
+#plt.plot(x, line, label="Fitted line: y=%.05fx+%.05f" % (gradient, intercept), color="red")
+#plt.ylim(0, max(plt.ylim()[1], max(y)))
+#plt.xlabel("Size of dataset")
+#plt.ylabel("Time (seconds)")
+#plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+#plt.savefig("binary_all_data.pdf", bbox_inches='tight')
+#plt.savefig("binary_all_data.png", bbox_inches='tight')
 
 print "Drawing plot of means"
 
@@ -65,6 +65,7 @@ for key in n:
     means[key] /= n[key]
     recursive_means[key] /= n[key]
 
+print len(n)
 
 plt.figure()
 x = [key for key in n]
