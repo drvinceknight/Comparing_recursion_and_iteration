@@ -19,7 +19,7 @@ def timeit(code, trials=10):
     return mean(t)
 
 
-def factorial(n):
+def iterativefactorial(n):
     r = 1
     i = 1
     while i <= n:
@@ -45,7 +45,8 @@ if __name__ == "__main__":
     n = 56551
     while n <= N:
         print "Calculating %s!" % n
-        t = timeit('factorial(n)')
+        t = timeit('iterativefactorial(n)')
+
         print "\t base: %.04f seconds" % t
         r = timeit('recursivefactorial(n)')
         print "\t recursive: %.04f seconds" % r

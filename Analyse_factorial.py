@@ -45,7 +45,7 @@ ax1.set_ylabel("time (seconds)")
 
 ax2 = ax1.twinx()
 ax2.plot(x, yc, color="Black", label="Ratio")
-ax2.set_ylabel("Ratio of base to recursive time")
+ax2.set_ylabel("Ratio of iterative to recursive time")
 
 plt.plot(x, [1 for e in x], color="Green", linestyle="dashed")
 plt.ylim(0, plt.ylim()[1])
