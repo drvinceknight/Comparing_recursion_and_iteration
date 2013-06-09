@@ -65,8 +65,6 @@ for key in n:
     means[key] /= n[key]
     recursive_means[key] /= n[key]
 
-print len(n)
-
 plt.figure()
 x = [key for key in n]
 y1 = [means[key] for key in n]
