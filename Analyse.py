@@ -30,11 +30,13 @@ y = [e[1] for e in recursivedata]
 gradient, intercept, r_value, p_value, std_err = stats.linregress(x, y)
 line = [gradient * e + intercept for e in x]
 plt.scatter(x, y, label="Recursive", color="red")
-plt.plot(x, line, label="Fitted line: y=%.02fx+%.02f" % (gradient, intercept), color="red")
+plt.plot(x, line, label="Fitted line: y=%.05fx+%.05f" % (gradient, intercept), color="red")
 plt.ylim(0, max(plt.ylim()[1], max(y)))
-plt.legend(loc=2)
-plt.savefig("binary_all_data.pdf")
-plt.savefig("binary_all_data.png")
+plt.xlabel("Size of dataset")
+plt.ylabel("Time (seconds)")
+plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.savefig("binary_all_data.pdf", bbox_inches='tight')
+plt.savefig("binary_all_data.png", bbox_inches='tight')
 
 print "Drawing plot of means"
 
@@ -78,6 +80,8 @@ line = [gradient * e + intercept for e in x]
 plt.scatter(x, y2, label="Recursive binary search", color="red")
 plt.plot(x, line, label="Fitted line: y=%.05fx+%.05f" % (gradient, intercept), color="red")
 plt.ylim(0, max(plt.ylim()[1], max(y2)))
-plt.legend(loc=2)
-plt.savefig("binary_mean.pdf")
-plt.savefig("binary_mean.png")
+plt.xlabel("Size of dataset")
+plt.ylabel("Time (seconds)")
+plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.savefig("binary_mean.pdf", bbox_inches='tight')
+plt.savefig("binary_mean.png", bbox_inches='tight')

@@ -49,7 +49,7 @@ if __name__ == "__main__":
         print "\t base: %.04f seconds" % t
         r = timeit('recursivefactorial(n)')
         print "\t recursive: %.04f seconds" % r
-        print "\t ratio: %.06f" % t / r
+        print "\t ratio: %.06f" % (t / r)
         datafile.writerow([n, t, r])
         n += 50
     f.close()
